@@ -1,0 +1,34 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model SchoolRegister.ViewModels.DTOs.AttachDetachStudentToGroupDto
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["DetachStudentFromGroup"];
+}
+
+<h2>@Localizer["DetachStudentFromGroup"]</h2>
+
+<h3>@Localizer["DetachStudentFromGroupConfirm"]</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Localizer["Student"]
+        </dt>
+        <dd>
+            @ViewBag.studentName
+        </dd>
+        <dt>
+            @Localizer["Group"]
+        </dt>
+        <dd>
+            @ViewBag.groupName
+        </dd>
+    </dl>
+
+    <form asp-action="DetachStudentFromGroup">
+        <input type="hidden" asp-for="GroupId" value="@ViewBag.GroupId" />
+        <input type="hidden" asp-for="StudentId" value="@ViewBag.StudentId" />
+        <input type="submit" value="@Localizer["Delete"]" class="btn btn-default" /> |
+        <a asp-action="ViewStudents" asp-controller="Student">@Localizer["BackToList"]</a>
+    </form>
+</div>

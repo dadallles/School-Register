@@ -1,0 +1,32 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model SchoolRegister.ViewModels.VMs.GroupVm
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["RemoveGroup"];
+}
+
+<h2>@Localizer["RemoveGroup"]</h2>
+
+<h3>@Localizer["RemoveGroupConfirm"]</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt>
+            @Localizer["Name"]
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+
+    <form asp-action="RemoveGroup">
+        <input type="submit" value="@Localizer["Delete"]" class="btn btn-default" /> |
+        <a asp-action="Index">@Localizer["BackListGroup"]</a>
+    </form>
+</div>

@@ -1,0 +1,57 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model IEnumerable<SchoolRegister.ViewModels.VMs.StudentVm>
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["ViewStudentOfParent"];
+}
+
+<h2>@Localizer["ViewStudentOfParent"]</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Localizer["FirstName"]
+            </th>
+            <th>
+                @Localizer["LastName"]
+            </th>
+            <th>
+                @Localizer["GroupName"]
+            </th>
+            <th>
+                @Localizer["AverageGrade"]
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GroupName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AverageGrade)
+                </td>
+                <td>
+                    @Html.ActionLink(Localizer["ViewGrades"].Value, "ViewGrades", "Grade", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
